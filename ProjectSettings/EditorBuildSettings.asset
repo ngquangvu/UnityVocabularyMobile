@@ -5,12 +5,27 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+    path: Assets/Scenes/MainScene.unity
+    guid: 1c41a467b48794eb09dd2d6c3cf7f5dd
+  - enabled: 1
+    path: Assets/Scenes/Mode/HomeScene.unity
+    guid: f413dccda0e0a40b2ac5bb54a4ccf9eb
+  - enabled: 1
+    path: Assets/Scenes/NavigationBarScene.unity
+    guid: ab15e8fb23e7b45f5b2c683245082f9f
+  - enabled: 1
+    path: Assets/Scenes/Mode/SkillUpScene.unity
+    guid: d7c9aabcebeab476a9305ba4c5361a0d
+  - enabled: 1
+    path: Assets/Scenes/Mode/StudyScene.unity
+    guid: 5ca3ed3f9ac8947239d7a4e1ddadb75f
+  - enabled: 1
+    path: Assets/Scenes/Mode/AccountScene.unity
+    guid: 1684aeb639cef4730a1361f08f6d40fd
+  - enabled: 1
+    path: Assets/Scenes/Mode/SettingScene.unity
+    guid: ac626435a036b448cbd24d94e0089867
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 039f213e3995146b0ab3eef54e2f4de7, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: d24f84b7ac06247818a66a1687f0b15c, type: 2}

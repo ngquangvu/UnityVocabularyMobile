@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NavigationBar : MonoBehaviour
@@ -29,7 +30,7 @@ public class NavigationBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeScreen(imgIconBtnHome, Model.SCREEN_MODE_ENUM.HOME, true);
+        ChangeScreen(imgIconBtnHome, Models.SCREEN_MODE_ENUM.HOME, true);
     }
 
     // Update is called once per frame
@@ -40,32 +41,30 @@ public class NavigationBar : MonoBehaviour
 
     public void ChangeToHomeScreen()
     {
-        ChangeScreen(imgIconBtnHome, Model.SCREEN_MODE_ENUM.HOME);
+        ChangeScreen(imgIconBtnHome, Models.SCREEN_MODE_ENUM.HOME);
     }
 
     public void ChangeToSkillUpScreen()
     {
-        ChangeScreen(imgIconBtnSkillUp, Model.SCREEN_MODE_ENUM.SKILL_UP);
+        ChangeScreen(imgIconBtnSkillUp, Models.SCREEN_MODE_ENUM.SKILL_UP);
     }
 
     public void ChangeToStudyScreen()
     {
-        ChangeScreen(imgIconBtnStudy, Model.SCREEN_MODE_ENUM.STUDY);
+        ChangeScreen(imgIconBtnStudy, Models.SCREEN_MODE_ENUM.STUDY);
     }
 
     public void ChangeToAccountScreen()
     {
-        ChangeScreen(imgIconBtnAccount, Model.SCREEN_MODE_ENUM.ACCOUNT);
-
+        ChangeScreen(imgIconBtnAccount, Models.SCREEN_MODE_ENUM.ACCOUNT);
     }
 
     public void ChangeToSettingScreen()
     {
-        ChangeScreen(imgIconBtnSetting, Model.SCREEN_MODE_ENUM.SETTING);
-
+        ChangeScreen(imgIconBtnSetting, Models.SCREEN_MODE_ENUM.SETTING);
     }
 
-    private void ChangeScreen(Image imgIconButton, Model.SCREEN_MODE_ENUM mode, bool isSkipCheckMode = false)
+    private void ChangeScreen(Image imgIconButton, Models.SCREEN_MODE_ENUM mode, bool isSkipCheckMode = false)
     {
         // If button is actived already -> return
         if (MainController.SCREEN_MODE == mode && isSkipCheckMode == false)
@@ -76,26 +75,34 @@ public class NavigationBar : MonoBehaviour
         // Change buttons state, change screen
         ChangeButtonToUnSelect();
         ChangeColorAndSizeToSelect(imgIconButton);
+
+        MainController.LAST_SCREEN_MODE = MainController.SCREEN_MODE;
         MainController.SCREEN_MODE = mode;
+
+        // Load scene
+        LoadModeScene();
+
+        // Unload last scene
+        UnloadModeScene();
     }
 
     private void ChangeButtonToUnSelect()
     {
         switch (MainController.SCREEN_MODE)
         {
-            case Model.SCREEN_MODE_ENUM.HOME:
+            case Models.SCREEN_MODE_ENUM.HOME:
                 ChangeColorAndSizeToUnSelect(imgIconBtnHome);
                 break;
-            case Model.SCREEN_MODE_ENUM.SKILL_UP:
+            case Models.SCREEN_MODE_ENUM.SKILL_UP:
                 ChangeColorAndSizeToUnSelect(imgIconBtnSkillUp);
                 break;
-            case Model.SCREEN_MODE_ENUM.STUDY:
+            case Models.SCREEN_MODE_ENUM.STUDY:
                 ChangeColorAndSizeToUnSelect(imgIconBtnStudy);
                 break;
-            case Model.SCREEN_MODE_ENUM.ACCOUNT:
+            case Models.SCREEN_MODE_ENUM.ACCOUNT:
                 ChangeColorAndSizeToUnSelect(imgIconBtnAccount);
                 break;
-            case Model.SCREEN_MODE_ENUM.SETTING:
+            case Models.SCREEN_MODE_ENUM.SETTING:
                 ChangeColorAndSizeToUnSelect(imgIconBtnSetting);
                 break;
             default:
@@ -140,5 +147,53 @@ public class NavigationBar : MonoBehaviour
 
         // Delete clip
         Destroy(clip);
+    }
+
+    private void LoadModeScene()
+    {
+        switch (MainController.SCREEN_MODE)
+        {
+            case Models.SCREEN_MODE_ENUM.HOME:
+                SceneManager.LoadSceneAsync(ConstantScene.HomeScene, LoadSceneMode.Additive);
+                break;
+            case Models.SCREEN_MODE_ENUM.SKILL_UP:
+                SceneManager.LoadSceneAsync(ConstantScene.SkillupScene, LoadSceneMode.Additive);
+                break;
+            case Models.SCREEN_MODE_ENUM.STUDY:
+                SceneManager.LoadSceneAsync(ConstantScene.StudyScene, LoadSceneMode.Additive);
+                break;
+            case Models.SCREEN_MODE_ENUM.ACCOUNT:
+                SceneManager.LoadSceneAsync(ConstantScene.AccountScene, LoadSceneMode.Additive);
+                break;
+            case Models.SCREEN_MODE_ENUM.SETTING:
+                SceneManager.LoadSceneAsync(ConstantScene.SettingScene, LoadSceneMode.Additive);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void UnloadModeScene()
+    {
+        switch (MainController.LAST_SCREEN_MODE)
+        {
+            case Models.SCREEN_MODE_ENUM.HOME:
+                SceneManager.UnloadSceneAsync(ConstantScene.HomeScene, UnloadSceneOptions.None);
+                break;
+            case Models.SCREEN_MODE_ENUM.SKILL_UP:
+                SceneManager.UnloadSceneAsync(ConstantScene.SkillupScene, UnloadSceneOptions.None);
+                break;
+            case Models.SCREEN_MODE_ENUM.STUDY:
+                SceneManager.UnloadSceneAsync(ConstantScene.StudyScene, UnloadSceneOptions.None);
+                break;
+            case Models.SCREEN_MODE_ENUM.ACCOUNT:
+                SceneManager.UnloadSceneAsync(ConstantScene.AccountScene, UnloadSceneOptions.None);
+                break;
+            case Models.SCREEN_MODE_ENUM.SETTING:
+                SceneManager.UnloadSceneAsync(ConstantScene.SettingScene, UnloadSceneOptions.None);
+                break;
+            default:
+                break;
+        }
     }
 }
