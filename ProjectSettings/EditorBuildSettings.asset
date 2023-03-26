@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 1c41a467b48794eb09dd2d6c3cf7f5dd
   - enabled: 1
-    path: Assets/Scenes/Mode/HomeScene.unity
-    guid: f413dccda0e0a40b2ac5bb54a4ccf9eb
-  - enabled: 1
     path: Assets/Scenes/NavigationBarScene.unity
     guid: ab15e8fb23e7b45f5b2c683245082f9f
+  - enabled: 1
+    path: Assets/Scenes/SelectLevelScene.unity
+    guid: ff1395c03ed594d00b87cb12aea2be42
+  - enabled: 1
+    path: Assets/Scenes/Mode/HomeScene.unity
+    guid: f413dccda0e0a40b2ac5bb54a4ccf9eb
   - enabled: 1
     path: Assets/Scenes/Mode/SkillUpScene.unity
     guid: d7c9aabcebeab476a9305ba4c5361a0d

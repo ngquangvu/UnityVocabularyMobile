@@ -12,4 +12,14 @@ public class Models
         ACCOUNT,
         SETTING
     }
+
+
+    public enum SELECT_LEVEL
+    {
+        LEVEL_NaN,
+        LEVEL_1,
+        LEVEL_2,
+        LEVEL_3,
+        LEVEL_4,
+    }
 }

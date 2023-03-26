@@ -19,12 +19,9 @@ public class NavigationBar : MonoBehaviour
     public Image imgIconBtnAccount;
     public Image imgIconBtnSetting;
 
-    private Color colorSelect = new Color(90f / 255f, 56f / 255f, 178f / 255f, 255f / 255f);
-    private Color colorUnSelect = new Color(94f / 255f, 101f / 255f, 122f / 255f, 255f / 255f);
-
     private List<Image> listImageIcon = new List<Image>();
-    Vector2 normalSizeIcon = new Vector2(35, 35);
-    Vector2 bigSizeIcon = new Vector2(45, 45);
+    Vector2 normalSizeIcon = new Vector2(30, 30);
+    Vector2 bigSizeIcon = new Vector2(35, 35);
 
 
     // Start is called before the first frame update
@@ -112,13 +109,13 @@ public class NavigationBar : MonoBehaviour
 
     private void ChangeColorAndSizeToSelect(Image imageIconSelect)
     {
-        imageIconSelect.color = colorSelect;
+        imageIconSelect.color = ConstantValues.colorIndigo;
         ChangeSizeIconAnimate(imageIconSelect.gameObject, true);
     }
 
     private void ChangeColorAndSizeToUnSelect(Image imageIconUnSelect)
     {
-        imageIconUnSelect.color = colorUnSelect;
+        imageIconUnSelect.color = ConstantValues.colorLightBlack;
         ChangeSizeIconAnimate(imageIconUnSelect.gameObject, false);
     }
 

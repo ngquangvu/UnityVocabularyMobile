@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstantValues
+public class BackButton : MonoBehaviour
 {
-    public const float NavBarHeight = 100f;
+
 }

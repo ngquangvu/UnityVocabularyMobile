@@ -6,6 +6,7 @@ public class ConstantScene
 {
     public const string MainScene = "MainScene";
     public const string NavigationbarScene = "NavigationBarScene";
+    public const string SelectLevelScene = "SelectLevelScene";
     public const string HomeScene = "HomeScene";
     public const string SkillupScene = "SkillUpScene";
     public const string StudyScene = "StudyScene";
