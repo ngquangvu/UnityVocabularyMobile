@@ -15,4 +15,16 @@ public class MainController : MonoBehaviour
     {
         SceneManager.LoadScene(ConstantScene.SelectLevelScene, LoadSceneMode.Additive);
     }
+
+    // public void BackScreen()
+    // {
+    //     if (LAST_SCREEN_MODE == Models.SCREEN_MODE_ENUM.SELECT_LEVEL)
+    //     {
+    //         SceneManager.LoadScene(ConstantScene.SelectLevelScene, LoadSceneMode.Additive);
+    //     }
+    //     else
+    //     {
+    //         SceneManager.LoadScene(Utilities.ScreenEnumToString(LAST_SCREEN_MODE), LoadSceneMode.Additive);
+    //     }
+    // }
 }

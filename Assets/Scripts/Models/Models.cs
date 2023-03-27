@@ -6,6 +6,10 @@ public class Models
 {
     public enum SCREEN_MODE_ENUM
     {
+        // Screen full
+        SELECT_LEVEL,
+
+        // Screen mode
         HOME,
         SKILL_UP,
         STUDY,

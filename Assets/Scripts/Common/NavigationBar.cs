@@ -20,13 +20,16 @@ public class NavigationBar : MonoBehaviour
     public Image imgIconBtnSetting;
 
     private List<Image> listImageIcon = new List<Image>();
-    Vector2 normalSizeIcon = new Vector2(30, 30);
-    Vector2 bigSizeIcon = new Vector2(35, 35);
+    Vector2 normalSizeIcon = new Vector2(50, 50);
+    Vector2 bigSizeIcon = new Vector2(70, 70);
 
 
     // Start is called before the first frame update
     void Start()
     {
+        normalSizeIcon = imgIconBtnHome.gameObject.transform.GetComponent<RectTransform>().sizeDelta;
+        bigSizeIcon = normalSizeIcon * 1.28f;
+
         ChangeScreen(imgIconBtnHome, Models.SCREEN_MODE_ENUM.HOME, true);
     }
 
