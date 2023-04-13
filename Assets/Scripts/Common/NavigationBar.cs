@@ -67,7 +67,7 @@ public class NavigationBar : MonoBehaviour
     private void ChangeScreen(Image imgIconButton, Models.SCREEN_MODE_ENUM mode, bool isSkipCheckMode = false)
     {
         // If button is actived already -> return
-        if (MainController.SCREEN_MODE == mode && isSkipCheckMode == false)
+        if (MainController.CURRENT_SCREEN == mode && isSkipCheckMode == false)
         {
             return;
         }
@@ -76,8 +76,8 @@ public class NavigationBar : MonoBehaviour
         ChangeButtonToUnSelect();
         ChangeColorAndSizeToSelect(imgIconButton);
 
-        MainController.LAST_SCREEN_MODE = MainController.SCREEN_MODE;
-        MainController.SCREEN_MODE = mode;
+        MainController.LAST_SCREEN = MainController.CURRENT_SCREEN;
+        MainController.CURRENT_SCREEN = mode;
 
         // Load scene
         LoadModeScene();
@@ -88,7 +88,7 @@ public class NavigationBar : MonoBehaviour
 
     private void ChangeButtonToUnSelect()
     {
-        switch (MainController.SCREEN_MODE)
+        switch (MainController.CURRENT_SCREEN)
         {
             case Models.SCREEN_MODE_ENUM.HOME:
                 ChangeColorAndSizeToUnSelect(imgIconBtnHome);
@@ -151,7 +151,7 @@ public class NavigationBar : MonoBehaviour
 
     private void LoadModeScene()
     {
-        switch (MainController.SCREEN_MODE)
+        switch (MainController.CURRENT_SCREEN)
         {
             case Models.SCREEN_MODE_ENUM.HOME:
                 SceneManager.LoadSceneAsync(ConstantScene.HomeScene, LoadSceneMode.Additive);
@@ -175,7 +175,7 @@ public class NavigationBar : MonoBehaviour
 
     private void UnloadModeScene()
     {
-        switch (MainController.LAST_SCREEN_MODE)
+        switch (MainController.LAST_SCREEN)
         {
             case Models.SCREEN_MODE_ENUM.HOME:
                 SceneManager.UnloadSceneAsync(ConstantScene.HomeScene, UnloadSceneOptions.None);

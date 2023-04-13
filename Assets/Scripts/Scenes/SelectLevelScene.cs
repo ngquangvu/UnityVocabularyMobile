@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class SelectLevel : MonoBehaviour
+public class SelectLevelScene : MonoBehaviour
 {
     public GameObject goBtnLevel1;
     public GameObject goBtnLevel2;
@@ -27,6 +27,8 @@ public class SelectLevel : MonoBehaviour
     {
         btnContinue.interactable = false;
         selectLevel = Models.SELECT_LEVEL.LEVEL_NaN;
+
+        SetSelectedLevel();
     }
 
     public void ChangeButtonLevelColor(GameObject goSelectLevel)
@@ -65,11 +67,39 @@ public class SelectLevel : MonoBehaviour
         btnContinue.interactable = true;
     }
 
-    public void NextScene()
+    private void SetSelectedLevel()
     {
-        SceneManager.UnloadSceneAsync(ConstantScene.SelectLevelScene, UnloadSceneOptions.None);
-        MainController.SELECTED_LEVEL = selectLevel;
-        SceneManager.LoadScene(ConstantScene.NavigationbarScene, LoadSceneMode.Additive);
+        switch (MainController.SELECTED_LEVEL)
+        {
+            case Models.SELECT_LEVEL.LEVEL_1:
+                SelectLevel1();
+                ChangeButtonLevelColor(goBtnLevel1);
+                break;
+            case Models.SELECT_LEVEL.LEVEL_2:
+                SelectLevel2();
+                ChangeButtonLevelColor(goBtnLevel2);
+                break;
+            case Models.SELECT_LEVEL.LEVEL_3:
+                SelectLevel3();
+                ChangeButtonLevelColor(goBtnLevel3);
+                break;
+            case Models.SELECT_LEVEL.LEVEL_4:
+                SelectLevel4();
+                ChangeButtonLevelColor(goBtnLevel4);
+                break;
+            default:
+                break;
+        }
     }
 
+    public void NextScene()
+    {
+        MainController.CURRENT_SCREEN = MainController.LAST_SCREEN;
+        SceneManager.UnloadSceneAsync(ConstantScene.SelectLevelScene, UnloadSceneOptions.None);
+        MainController.SELECTED_LEVEL = selectLevel;
+        if (SceneManager.GetSceneByName(ConstantScene.NavigationbarScene).isLoaded == false)
+        {
+            SceneManager.LoadScene(ConstantScene.NavigationbarScene, LoadSceneMode.Additive);
+        }
+    }
 }
